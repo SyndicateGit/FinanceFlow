@@ -67,6 +67,7 @@ const config = {
         700: "#344054",
         900: "#101828",
       },
+      white: "#FFFFFF",
     },
     extend: {
       fontFamily: {
