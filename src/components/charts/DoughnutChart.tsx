@@ -14,11 +14,15 @@ const DoughnutChart = ({accounts} : DoughnutChartProps) => {
       {
         label: 'Accounts',
         data: accounts.map((account) => account.balance),
-        backgroundColor: [
-          '#0747b6',
-          '#2265d8',
-          '#2f91fa',
-        ],
+        backgroundColor: accounts.map((account) => {
+          if (account.accountType === "CREDIT"){
+            return "Red"
+          }
+          if(account.accountType === "SAVINGS"){
+            return "#2265d8"
+          }        
+          return "#0747b6"
+        }),
       }
     ],
     labels: accounts.map((account) => account.accountType),
