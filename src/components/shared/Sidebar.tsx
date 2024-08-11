@@ -17,15 +17,15 @@ const Sidebar = ({user}:SidebarProps) => {
       <nav className='flex flex-col gap-4'>
         <Link 
         href="/"
-        className='mb-12 cursor-pointer items-center gap-2'
+        className='mb-12 cursor-pointer flex items-center gap-2'
         >
           <Image src={Logo} width={34} height={34} alt='Finance Flow logo' className='size-[24px] max-xl:size-14'/>
-          <h1 className='2xl:text-26 font-ibm-plex-serif text-[26px] font-bold text-black-1 max-xl:hidden'>Finance Flow</h1>
+          <h1 className='2xl:text-26 font-ibm-plex-serif text-[26px] font-bold text-black-1 max-xl:hidden text-nowrap'>Finance Flow</h1>
         </Link>
         {sidebarLinks.map((item) => {
           const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
         return (
-          <Link key={item.label} href={item.route} className={cn("flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start", {'bg-[#0179FE] text-white': isActive})}>
+          <Link key={item.label} href={item.route} className={cn("flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start", {'bg-bankGradient text-white': isActive}, {"hover:bg-gray-200": !isActive})}>
             <div className='relative size-6'>
               <Image src={item.imageUrl} alt={item.label} fill className={cn({'brightness-[3] invert': isActive})}/>
             </div>
@@ -34,7 +34,9 @@ const Sidebar = ({user}:SidebarProps) => {
             </p>
           </Link>
         )})}
+        USER
       </nav>
+      FOOTER
     </section>
   )
 }

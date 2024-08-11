@@ -18,6 +18,9 @@ export default function RootLayout({
   return (
     <main className="flex h-screen w-full font-inter">
       <Sidebar user={loggedIn}/>
+      <div>
+        
+      </div>
       {children}
     </main>
   );
