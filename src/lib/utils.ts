@@ -63,10 +63,10 @@ export const formatDateTime = (dateString: Date) => {
   };
 };
 
-export function formatAmount(amount: number): string {
+export function formatAmount(amount: number, currency: string): string {
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "CAD",
+    currency: currency,
     minimumFractionDigits: 2,
   });
 
