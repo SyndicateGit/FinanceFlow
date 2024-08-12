@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import Logo from "@/public/icons/LogoIcon.png"
-import { sidebarLinks } from '@/constants';
+import { sidebarLinks } from '@/constants/sidebarLinks';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 interface SidebarProps {
