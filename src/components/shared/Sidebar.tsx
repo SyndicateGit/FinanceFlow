@@ -13,14 +13,14 @@ interface SidebarProps {
 const Sidebar = ({user}:SidebarProps) => {
   const pathname = usePathname();
   return (
-    <section className='sticky left-0 top-0 flex h-screen w-fit flex-col justify-between border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[355px]'>
+    <section className='sticky left-0 top-0 flex h-screen w-fit flex-col justify-between border-r border-gray-200 pt-8 max-md:hidden p-4 2xl:w-[355px]'>
       <nav className='flex flex-col gap-4'>
         <Link 
         href="/"
         className='mb-12 cursor-pointer flex items-center gap-2'
         >
           <Image src={Logo} width={34} height={34} alt='Finance Flow logo' className='size-[24px] max-xl:size-14'/>
-          <h1 className='2xl:text-26 font-ibm-plex-serif text-[26px] font-bold text-black-1 max-xl:hidden text-nowrap'>Finance Flow</h1>
+          <h1 className='text-[22px] font-bold text-black-1 max-xl:hidden text-nowrap'>Finance Flow</h1>
         </Link>
         {sidebarLinks.map((item) => {
           const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
