@@ -16,8 +16,9 @@ Finance Flow helps you manage your finances effectively. With Finance Flow, you 
 ## Website layout and styling is inspired by this video by JavaScript Mastery at: https://www.youtube.com/watch?v=PuOVqP_cjkE&t=6037s. Frontend logic surrounding data handling and visualization and backend is my original work.
 
 ## Things I've learned: 
-- Next: Next pages, Links, client vs server side rendering, making sure to have components that require client side rendering to be its own component.
-- Shacn ui
+- Next: Next pages, Links, Router, client vs server side rendering, making sure to have components that require client side rendering to be its own component.
+- Shadcn ui
 - Tailwind cn function
-- Better responsive design by having different media breakpoints, hiding sidebar at md and showing the mobile sidebar instead at below md.
-- 
+- Better responsive design by having different media breakpoints, different padding, hiding sidebar at md and showing the mobile sidebar instead at below md.
+- Zod form validation
+- react-form-hook with shadcn
