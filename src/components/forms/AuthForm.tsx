@@ -24,20 +24,27 @@ import FormTextField from './FormTextInput'
 
 import { Loader2 } from 'lucide-react'
 
-const formSchema = z.object({
+const authFormSchema = (type: string) => z.object({
   email: z.string().email(),
   password: z.string().min(8),
+
+  // sign-up specific fields
+  firstName: type ==='sign-in'? z.string().optional() : z.string().min(2),
+  lastName:  type ==='sign-in'? z.string().optional() : z.string().min(2),
+  phone:  type ==='sign-in'? z.string().optional() : z.string().min(10),
 })
 
 const AuthForm = ({type}: {type: string}) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const formSchema = authFormSchema(type);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
     },
-  })
+  });
  
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
@@ -65,6 +72,34 @@ const AuthForm = ({type}: {type: string}) => {
       <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          {type === 'sign-up' && (
+            <>
+              <div className='flex gap-4'>
+               <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormTextField field={field} label={'First Name'} placeholder={'Enter your firstname.'} />
+                  )} 
+                />
+                <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormTextField field={field} label={'Last Name'} placeholder={'Enter your firstname.'} />
+                  )}  
+                />
+              </div>
+               
+                <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormTextField field={field} label={'Phone Number'} placeholder={'Enter your phone number.'} />
+                  )}  
+                />
+            </>
+            )}
         <FormField
           control={form.control}
           name="email"
