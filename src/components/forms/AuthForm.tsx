@@ -46,11 +46,29 @@ const AuthForm = ({type}: {type: string}) => {
     },
   });
  
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
-    setTimeout(() => {
-    }, 2000);
-    setIsLoading(false);
+    try{
+      if(type === 'sign-in'){
+        const userData = {
+          email: values.email,
+          password: values.password
+        }
+      } else {
+        const newUser = {
+          email: values.email,
+          password: values.password,
+          firstName: values.firstName,
+          lastName: values.lastName,
+          phone: values.phone
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    } finally{
+      setIsLoading(false);
+    }
+
   }
 
   return (
