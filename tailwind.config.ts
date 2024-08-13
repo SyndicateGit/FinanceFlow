@@ -68,6 +68,20 @@ const config = {
         900: "#101828",
       },
       white: "#FFFFFF",
+      red: {
+        25: "#FEF6F6",
+        100: "#FCE7E7",
+        500: "#F93131",
+        600: "#E60B0B",
+        700: "#C10A0A",
+        900: "#851515",
+      },
+    },
+    backgroundImage: {
+      "bank-gradient": "linear-gradient(90deg, #0179FE 0%, #4893FF 100%)",
+      "gradient-mesh": "url('/icons/gradient-mesh.svg')",
+      "bank-green-gradient":
+        "linear-gradient(90deg, #01797A 0%, #489399 100%)",
     },
     extend: {
       fontFamily: {
