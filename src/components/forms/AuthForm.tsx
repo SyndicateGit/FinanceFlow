@@ -8,7 +8,7 @@ import Logo from '@/public/icons/LogoIcon.png'
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -24,6 +24,8 @@ import FormTextField from './FormTextInput'
 
 import { Loader2 } from 'lucide-react'
 
+import { signIn, signUp } from '@/services/auth.services'
+
 const authFormSchema = (type: string) => z.object({
   email: z.string().email(),
   password: z.string().min(8),
@@ -37,6 +39,7 @@ const authFormSchema = (type: string) => z.object({
 const AuthForm = ({type}: {type: string}) => {
   const [isLoading, setIsLoading] = useState(false);
   const formSchema = authFormSchema(type);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,7 +57,15 @@ const AuthForm = ({type}: {type: string}) => {
           email: values.email,
           password: values.password
         }
+        await signIn(userData).then((token) => {
+          console.log(token);
+          router.push('/');
+        });
+
       } else {
+        if(!values.email || !values.firstName || !values.lastName || !values.phone){
+          return; // TODO: Generate error message
+        }
         const newUser = {
           email: values.email,
           password: values.password,
@@ -62,9 +73,17 @@ const AuthForm = ({type}: {type: string}) => {
           lastName: values.lastName,
           phone: values.phone
         }
+        // Remove old token so new token can be set for new user
+        localStorage.removeItem('finance_flow_auth_token');
+        await signUp(newUser).then((token) => {
+          console.log(token);
+          router.push('/sign-in');
+        });
       }
     } catch (error) {
       console.error(error);
+      // Auth token expired or invalid
+      localStorage.removeItem('finance_flow_auth_token');
     } finally{
       setIsLoading(false);
     }

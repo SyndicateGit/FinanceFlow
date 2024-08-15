@@ -1,5 +1,3 @@
-'user server';
-
 import axiosInstance from "./axios-instance";
 
 interface SignUpParams {
@@ -15,11 +13,12 @@ interface SignInParams {
   password: string;
 }
 
-export const signIn = async (userData: SignInParams) => {
+export const signIn = async (userData: SignInParams) : Promise<string> => {
   return await axiosInstance()
-    .post("/auth/sign-in", userData)
+    .post("/auth/authenticate", userData)
     .then((res) => {
-      return res.data;
+      localStorage.setItem("finance_flow_auth_token", res.data.token);
+      return res.data.token;
     })
     .catch((error) => {
       console.error(error);
@@ -29,9 +28,10 @@ export const signIn = async (userData: SignInParams) => {
 
 export const signUp = async (newUser: SignUpParams) => {
   return await axiosInstance()
-    .post("/auth/sign-up", newUser)
+    .post("/auth/register", newUser)
     .then((res) => {
-      return res.data;
+      localStorage.setItem("finance_flow_auth_token", res.data.token);
+      return res.data.token;
     })
     .catch((error) => {
       console.error(error);
