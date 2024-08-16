@@ -1,6 +1,6 @@
 import React from 'react'
-import { FormControl, FormLabel, FormMessage } from '../shared/ui/form'
-import { Input } from '../shared/ui/input'
+import { FormControl, FormLabel, FormMessage } from '../ui/form'
+import { Input } from '../ui/input'
 import { UseFormReturn } from 'react-hook-form';
 
 interface FormFieldProps {

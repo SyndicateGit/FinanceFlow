@@ -7,6 +7,7 @@ import { sidebarLinks } from '@/constants/sidebarLinks';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { User } from '@/Models/UserModel';
+import SidebarFooter from './SidebarFooter';
 interface SidebarProps {
   user: User;
 }
@@ -37,7 +38,7 @@ const Sidebar = ({user}:SidebarProps) => {
         )})}
         USER
       </nav>
-      FOOTER
+      <SidebarFooter user={user} type="desktop"/>
     </section>
   )
 }

@@ -8,7 +8,7 @@ import{
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/shared/ui/sheet";
+} from "@/components/ui/sheet";
 import Image from 'next/image';
 import HamburgerIcon from '@/public/icons/hamburger.svg';
 import Link from 'next/link';
@@ -17,6 +17,7 @@ import { sidebarLinks } from '@/constants/sidebarLinks';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { User } from '@/Models/UserModel';
+import SidebarFooter from './SidebarFooter';
 
 const MobileNav = ({user}: {user: User}) => {
   const pathname = usePathname();
@@ -52,7 +53,7 @@ const MobileNav = ({user}: {user: User}) => {
                 )})}
               </nav>
             </SheetClose>
-            FOOTER
+            <SidebarFooter  user={user} type="mobile" />
           </div>
         </SheetContent>
       </Sheet>
