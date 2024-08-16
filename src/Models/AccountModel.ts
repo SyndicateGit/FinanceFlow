@@ -3,6 +3,7 @@ declare type Account = {
   accountType: AccountType,
   balance: number,
   currency: "CAD",
+  transactionIds: string[],
 };
 
 declare type AccountType = "SAVINGS" | "DEBIT" | "CREDIT";

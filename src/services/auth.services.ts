@@ -38,3 +38,32 @@ export const signUp = async (newUser: SignUpParams) => {
       throw error;
     });
 }
+
+export const signOut = () => {
+  localStorage.removeItem("finance_flow_auth_token");
+  window.location.href = "/sign-in";
+}
+
+export const getUser = async (): Promise<User> => {
+  return await axiosInstance()
+    .get("/users/fetchUser")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
+
+export const getAccounts = async (): Promise<Account[]> => {
+  return await axiosInstance()
+    .get("/accounts/fetchUserAccounts")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}

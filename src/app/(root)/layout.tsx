@@ -10,7 +10,8 @@ export default function RootLayout({
 }>) {
   const loggedIn:User = {
     id: "1",
-    name: "Raymond Zeng",
+    firstName: "Raymond",
+    lastName: "Smith",
     email: "email@email.com",
     phone: "123-456-7890",
     role: "USER",
