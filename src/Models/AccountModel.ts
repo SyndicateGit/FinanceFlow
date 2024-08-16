@@ -1,4 +1,4 @@
-declare type Account = {
+export declare type Account = {
   id: string;
   accountType: AccountType,
   balance: number,

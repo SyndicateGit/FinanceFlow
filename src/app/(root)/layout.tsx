@@ -24,7 +24,7 @@ export default function RootLayout({
 
   return (
     <main className="flex h-screen w-full">
-      <Sidebar user={user }/>
+      <Sidebar user={user}/>
       <div className="flex size-full flex-col">
         <div className="flex h-16 items-center justify-between p-5 shadow-sm md:hidden">
           <Image src={Logo} width={30} height={30} alt="logo"/>

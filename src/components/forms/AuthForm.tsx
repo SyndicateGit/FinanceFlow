@@ -9,7 +9,7 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useRouter } from 'next/navigation'
-import { Button } from "@/components/shared/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -18,8 +18,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/shared/ui/form"
-import { Input } from "@/components/shared/ui/input"
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 import FormTextField from './FormTextInput'
 
 import { Loader2 } from 'lucide-react'
