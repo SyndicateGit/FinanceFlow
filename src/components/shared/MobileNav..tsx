@@ -8,7 +8,7 @@ import{
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@/components/shared/ui/sheet";
 import Image from 'next/image';
 import HamburgerIcon from '@/public/icons/hamburger.svg';
 import Link from 'next/link';
@@ -16,6 +16,7 @@ import Logo from "@/public/icons/LogoIcon.png";
 import { sidebarLinks } from '@/constants/sidebarLinks';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { User } from '@/Models/UserModel';
 
 const MobileNav = ({user}: {user: User}) => {
   const pathname = usePathname();

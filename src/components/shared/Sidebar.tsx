@@ -6,6 +6,7 @@ import Logo from "@/public/icons/LogoIcon.png"
 import { sidebarLinks } from '@/constants/sidebarLinks';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { User } from '@/Models/UserModel';
 interface SidebarProps {
   user: User;
 }

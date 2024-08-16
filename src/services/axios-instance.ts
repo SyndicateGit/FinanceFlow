@@ -1,3 +1,4 @@
+'use client'
 import axios from 'axios';
 
 const axiosInstance = (contentType = 'application/json') => {
@@ -15,6 +16,7 @@ const axiosInstance = (contentType = 'application/json') => {
       return response;
     },
     (error) => {
+      console.log(error)
       if (error.response.status === 401) {
         window.location.href = '/sign-in';
       }

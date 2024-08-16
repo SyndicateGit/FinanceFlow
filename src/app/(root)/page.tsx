@@ -1,6 +1,9 @@
 'use client'
-import HeaderBox from '@/components/shared/HeaderBox'
+import HeaderBox from '@/components/Home/HeaderBox'
+import RightSidebar from '@/components/Home/RightSidebar'
 import TotalBalanceBox from '@/components/TotalBalanceBox'
+import { Account } from '@/Models/AccountModel'
+import { User, defaultUser } from '@/Models/UserModel'
 import { getUser, getAccounts } from '@/services/auth.services'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
@@ -38,7 +41,13 @@ const Home = () => {
             totalCurrentBalance={totalCurrentBalance}
           />
         </header>
+        RECENT TRANSACTIONS
       </div>
+      <RightSidebar
+        user={user || defaultUser}
+        transactions={[]}
+        accounts={accounts}
+      />
     </section>
   )
 }
