@@ -17,6 +17,8 @@ interface SignInParams {
 }
 
 export const signIn = async (userData: SignInParams) : Promise<string> => {
+  // Public route should not have token
+  localStorage.removeItem("finance_flow_auth_token");
   return await axiosInstance()
     .post("/auth/authenticate", userData)
     .then((res) => {
@@ -30,6 +32,8 @@ export const signIn = async (userData: SignInParams) : Promise<string> => {
 };
 
 export const signUp = async (newUser: SignUpParams) => {
+  // Public route should not have token
+  localStorage.removeItem("finance_flow_auth_token");
   return await axiosInstance()
     .post("/auth/register", newUser)
     .then((res) => {
@@ -48,6 +52,10 @@ export const signOut = () => {
 }
 
 export const getUser = async (): Promise<User> => {
+  const token = localStorage.getItem("finance_flow_auth_token");
+  if(!token) {
+    window.location.href = "/sign-in";
+  }
   return await axiosInstance()
     .get("/users/fetchUser")
     .then((res) => {
@@ -70,3 +78,4 @@ export const getAccounts = async (): Promise<Account[]> => {
       throw error;
     });
 }
+

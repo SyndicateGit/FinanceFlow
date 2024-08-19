@@ -73,8 +73,6 @@ const AuthForm = ({type}: {type: string}) => {
           lastName: values.lastName,
           phone: values.phone
         }
-        // Remove old token so new token can be set for new user
-        localStorage.removeItem('finance_flow_auth_token');
         await signUp(newUser).then((token) => {
           console.log(token);
           router.push('/sign-in');
