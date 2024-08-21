@@ -3,9 +3,11 @@ import HeaderBox from '@/components/Home/HeaderBox'
 import RightSidebar from '@/components/Home/RightSidebar'
 import TotalBalanceBox from '@/components/TotalBalanceBox'
 import { Account } from '@/Models/AccountModel'
+import { Transaction } from '@/Models/TransactionModel'
 import { User, defaultUser } from '@/Models/UserModel'
 import { getAccounts } from '@/services/accounts.services'
 import { getUser } from '@/services/user.services'
+import { getTransactions } from '@/services/transactions.services'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { set } from 'zod'
@@ -14,6 +16,7 @@ const Home = () => {
   const router = useRouter();
   const [user, setUser] = React.useState<User>();
   const [accounts, setAccounts] = React.useState<Account[]>([]);
+  const [transactions, setTransactions] = React.useState<Transaction[]>([]);
 
   const totalCurrentBalance = accounts.reduce((acc, account) => acc + account.balance, 0);
 
@@ -23,8 +26,15 @@ const Home = () => {
     const accounts = await getAccounts();
     setAccounts(accounts);
   }
+
+  const fetchUserTransactions = async () => {
+    const transactions = await getTransactions();
+    setTransactions(transactions);
+    console.log(transactions);
+  }
   useEffect(() => {
     fetchUserAndAccounts();
+    fetchUserTransactions();
   }, [router]);
 
   return (
