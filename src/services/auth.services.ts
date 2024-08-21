@@ -51,31 +51,3 @@ export const signOut = () => {
   window.location.href = "/sign-in";
 }
 
-export const getUser = async (): Promise<User> => {
-  const token = localStorage.getItem("finance_flow_auth_token");
-  if(!token) {
-    window.location.href = "/sign-in";
-  }
-  return await axiosInstance()
-    .get("/users/fetchUser")
-    .then((res) => {
-      return res.data;
-    })
-    .catch((error) => {
-      console.error(error);
-      throw error;
-    });
-}
-
-export const getAccounts = async (): Promise<Account[]> => {
-  return await axiosInstance()
-    .get("/accounts/fetchUserAccounts")
-    .then((res) => {
-      return res.data;
-    })
-    .catch((error) => {
-      console.error(error);
-      throw error;
-    });
-}
-
