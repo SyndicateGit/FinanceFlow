@@ -7,7 +7,9 @@ import { Transaction } from '@/Models/TransactionModel'
 import { Bank } from '@/Models/BankModel'
 import { User, defaultUser } from '@/Models/UserModel'
 import { getTransactions } from '@/services/transactions.services'
-import { getUser, getAccounts, getBanks } from '@/services/auth.services'
+import { getAccounts } from '@/services/accounts.services'
+import { getBanks } from '@/services/banks.services'
+import { getUser } from '@/services/user.services'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { set } from 'zod'
@@ -28,13 +30,10 @@ const Home = () => {
     setAccounts(accounts);
     const banks = await getBanks();
     setBanks(banks);
-  }
-
-  const fetchUserTransactions = async () => {
     const transactions = await getTransactions();
     setTransactions(transactions);
-    console.log(transactions);
   }
+
   useEffect(() => {
     fetchUserData();
   }, [router]);

@@ -3,7 +3,7 @@ import Sidebar from "@/components/shared/Sidebar";
 import Image from "next/image";
 import Logo from "@/public/icons/LogoIcon.png"
 import MobileNav from "@/components/shared/MobileNav.";
-import { getUser } from "@/services/auth.services";
+import { getUser } from "@/services/user.services";
 import { defaultUser, User } from "@/Models/UserModel";
 import { useEffect, useState } from "react";
 
