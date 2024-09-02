@@ -4,6 +4,7 @@ import TransactionHistory from "@/public/icons/transaction-history.svg";
 import Statistics from "@/public/icons/statistics.svg";
 import CreateTransaction from "@/public/icons/create-transaction.svg";
 import TransferFunds from "@/public/icons/transfer-funds.svg";
+import Banks from "@/public/icons/banks.svg";
 
 export const sidebarLinks = [
   {
@@ -12,9 +13,9 @@ export const sidebarLinks = [
     label: "Home",
   },
   {
-    imageUrl: Accounts,
-    route: "/accounts",
-    label: "Accounts",
+    imageUrl: Banks,
+    route: "/banks",
+    label: "Banks",
   },
   {
     imageUrl: TransactionHistory,
