@@ -3,7 +3,7 @@ import { Transaction } from "@/Models/TransactionModel";
 
 export const getTransactions = async (): Promise<Transaction[]> => {
   return await axiosInstance()
-    .get("/transactions/userAccount")
+    .get("/transactions/")
     .then((res) => {
       return res.data;
     })

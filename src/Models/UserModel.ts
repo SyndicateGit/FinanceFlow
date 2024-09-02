@@ -5,6 +5,7 @@ export declare type User = {
   email: string;
   phone: string
   role: Role;
+  bankIds: string[];
 }
 
 export const defaultUser: User = {
@@ -14,6 +15,7 @@ export const defaultUser: User = {
   email: "",
   phone: "",
   role: "USER",
+  bankIds: []
 };
 
 declare type Role = "ADMIN" | "USER";

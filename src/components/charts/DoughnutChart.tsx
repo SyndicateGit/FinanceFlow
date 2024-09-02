@@ -3,13 +3,19 @@ import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
 import { Account } from '@/Models/AccountModel'
+import { Bank } from '@/Models/BankModel'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 interface DoughnutChartProps {
   accounts: Account[]; 
+  banks: Bank[];
 }
-const DoughnutChart = ({accounts} : DoughnutChartProps) => {
+
+const DoughnutChart = ({accounts, banks} : DoughnutChartProps) => {
+  const mapAccountToBank = (account: Account) => {
+    return banks.find((bank) => bank.accountIds.includes(account.id))
+  }
   const data = {
     datasets: [
       {
@@ -26,7 +32,7 @@ const DoughnutChart = ({accounts} : DoughnutChartProps) => {
         }),
       }
     ],
-    labels: accounts.map((account) => account.accountType),
+    labels: accounts.map((account) => {return mapAccountToBank(account)?.name + " " + account.accountType || account.id}),
   }
   return (
     <Doughnut 
