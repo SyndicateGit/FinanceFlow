@@ -2,6 +2,7 @@
 import { Account } from "@/Models/AccountModel";
 import axiosInstance from "./axios-instance";
 import { User } from "@/Models/UserModel";
+import { Bank } from "@/Models/BankModel";
 
 interface SignUpParams {
   email: string;
@@ -51,3 +52,38 @@ export const signOut = () => {
   window.location.href = "/sign-in";
 }
 
+export const getUser = async (): Promise<User> => {
+  return await axiosInstance()
+    .get("/users/")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
+
+export const getAccounts = async (): Promise<Account[]> => {
+  return await axiosInstance()
+    .get("/accounts/")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
+
+export const getBanks = async (): Promise<Bank[]> => { 
+  return await axiosInstance()
+    .get("/banks/")
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
+}
