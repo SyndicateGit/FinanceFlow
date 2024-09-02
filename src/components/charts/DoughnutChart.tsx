@@ -2,31 +2,31 @@
 import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
-import { Bank } from '@/Models/BankModel'
+import { Account } from '@/Models/AccountModel'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 interface DoughnutChartProps {
-  banks: Bank[]; 
+  accounts: Account[]; 
 }
-const DoughnutChart = ({banks} : DoughnutChartProps) => {
+const DoughnutChart = ({accounts} : DoughnutChartProps) => {
   const data = {
     datasets: [
       {
         label: 'Accounts',
-        data: banks.map((bank) => bank.totalBalance),
-        backgroundColor: banks.map((bank) => {
-          if (bank.totalBalance < 0){
+        data: accounts.map((account) => account.balance),
+        backgroundColor: accounts.map((account) => {
+          if (account.accountType === "CREDIT"){
             return "Red"
           }
-          if(bank.totalBalance < 1000){
+          if(account.accountType === "SAVINGS"){
             return "#2265d8"
           }        
           return "#0747b6"
         }),
       }
     ],
-    labels: banks.map((bank) => bank.name),
+    labels: accounts.map((account) => account.accountType),
   }
   return (
     <Doughnut 

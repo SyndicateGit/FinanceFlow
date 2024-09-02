@@ -21,7 +21,12 @@ const Home = () => {
   const [accounts, setAccounts] = React.useState<Account[]>([]);
   const [transactions, setTransactions] = React.useState<Transaction[]>([]);
 
-  const totalCurrentBalance = banks.reduce((acc, bank) => acc + bank.totalBalance, 0);
+  const totalCurrentBalance = accounts.reduce((acc, account) => {
+    if(account.accountType === 'CREDIT'){
+      return acc - account.balance;
+    }
+    return acc + account.balance;
+  }, 0);
 
   const fetchUserData = async () => {
     const user = await getUser();
@@ -49,7 +54,7 @@ const Home = () => {
             subtext="Manage your transactions and budget with ease."
           />
           <TotalBalanceBox 
-            banks={banks}
+            accounts={accounts}
             totalCurrentBalance={totalCurrentBalance}
           />
         </header>
