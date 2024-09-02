@@ -1,5 +1,5 @@
 export declare type Transaction = {
-  id: number,
+  id: string,
   type: TransactionType;
   amount: number;
   currency: string;

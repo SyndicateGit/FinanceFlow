@@ -13,6 +13,7 @@ import { getUser } from '@/services/user.services'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { set } from 'zod'
+import RecentTransactions from '@/components/Home/RecentTransactions'
 
 const Home = () => {
   const router = useRouter();
@@ -32,11 +33,20 @@ const Home = () => {
     const user = await getUser();
     setUser(user);
     const accounts = await getAccounts();
-    setAccounts(accounts);
     const banks = await getBanks();
     setBanks(banks);
     const transactions = await getTransactions();
     setTransactions(transactions);
+    const updatedAccounts = updatedAccountsWithTransactions(accounts, transactions);
+    setAccounts(updatedAccounts);
+  }
+
+  const updatedAccountsWithTransactions = (accounts:Account[], transactions: Transaction[]) => {
+    const updatedAccounts = accounts.map((account) => {
+      const accountTransactions = transactions.filter((transaction) => account.transactionIds.includes(transaction.id))
+      return {...account, transactions: accountTransactions}
+    })
+    return updatedAccounts;
   }
 
   useEffect(() => {
@@ -59,7 +69,9 @@ const Home = () => {
             totalCurrentBalance={totalCurrentBalance}
           />
         </header>
-        RECENT TRANSACTIONS
+        <RecentTransactions 
+          accounts={accounts}
+        />
       </div>
       <RightSidebar
         user={user || defaultUser}
