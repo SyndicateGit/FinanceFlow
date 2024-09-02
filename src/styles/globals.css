@@ -19,6 +19,18 @@
   align-items: center;
 }
 
+.bg-custom-gradient-mesh{
+  background-color:hsla(229,75%,50%,0.66);
+  background-image:
+  radial-gradient(at 97% 40%, hsla(213,80%,63%,1) 0px, transparent 50%),
+  radial-gradient(at 25% 64%, hsla(331,88%,76%,1) 0px, transparent 50%),
+  radial-gradient(at 21% 44%, hsla(38,87%,72%,1) 0px, transparent 50%),
+  radial-gradient(at 14% 35%, hsla(51,62%,65%,1) 0px, transparent 50%),
+  radial-gradient(at 47% 50%, hsla(109,76%,68%,1) 0px, transparent 50%),
+  radial-gradient(at 96% 4%, hsla(274,76%,75%,1) 0px, transparent 50%),
+  radial-gradient(at 64% 81%, hsla(31,76%,60%,1) 0px, transparent 50%);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

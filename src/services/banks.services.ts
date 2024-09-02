@@ -1,9 +1,9 @@
+import { Bank } from "@/Models/BankModel";
 import axiosInstance from "./axios-instance";
-import { Account } from "@/Models/AccountModel";
 
-export const getAccounts = async (): Promise<Account[]> => {
+export const getBanks = async (): Promise<Bank[]> => { 
   return await axiosInstance()
-    .get("/accounts/")
+    .get("/banks/")
     .then((res) => {
       return res.data;
     })

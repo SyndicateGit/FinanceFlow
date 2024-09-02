@@ -1,7 +1,6 @@
 'use client'
-import { Account } from "@/Models/AccountModel";
+
 import axiosInstance from "./axios-instance";
-import { User } from "@/Models/UserModel";
 
 interface SignUpParams {
   email: string;
