@@ -15,8 +15,7 @@ interface BankCardProps {
 
 const BankCard = ({bank, userName, showBalance = true, currency = "CAD"}: BankCardProps) => {
   return (
-    <Link href="/" className='flex h-[190px] w-full max-w-[320px] justify-between rounded-[20px] border border-white bg-bank-gradient shadow-sm text-white'>
-      <div className='flex size-full max-w-[228px] flex-col justify-between rounded-l-[20px] bg-gray-700 bg-bank-gradient px-5 pb-4 pt-5'>
+    <Link href="/" className='flex flex-col justify-between h-[190px] w-full max-w-[320px] rounded-[20px] border border-white bg-bank-gradient shadow-sm text-white border-r-[20px] border-r-bankGradient px-5 pb-4 pt-5'>
         <div className='flex justify-between'>
           <div className='flex-col'>
             <h1 className='font-semibold'>{bank.name}</h1>
@@ -27,7 +26,6 @@ const BankCard = ({bank, userName, showBalance = true, currency = "CAD"}: BankCa
         <div className=''>
           {userName}
         </div>
-      </div>
     </Link>
   )
 }

@@ -48,7 +48,7 @@ const RightSidebar = ({user, banks, transactions} : RightSidebarProps) => {
           </Link>
         </div>
         {banks.length > 0 && (
-          <Carousel opts={{align: "center"}} className='mx-8 py-8'>
+          <Carousel opts={{align: "center", loop: true,}} className='mx-8 py-8'>
             <CarouselContent>
               {banks.map((bank, index) => (
                 <CarouselItem key={index}>
