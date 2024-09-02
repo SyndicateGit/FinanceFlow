@@ -1,16 +1,24 @@
 'use client'
 import React from 'react'
 import { User } from '@/Models/UserModel'
-import { Account } from '@/Models/AccountModel'
 import Link from 'next/link'
 import Image from 'next/image'
 import PlusIcon from '@/public/icons/plus.svg'
+import { Bank } from '@/Models/BankModel'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+import BankCard from '../BankCard'
 interface RightSidebarProps {
   user: User,
-  accounts: Account[],
+  banks: Bank[],
   transactions: any,
 }
-const RightSidebar = ({user, accounts, transactions} : RightSidebarProps) => {
+const RightSidebar = ({user, banks, transactions} : RightSidebarProps) => {
   return (
     <aside className='no-scrollbar hidden h-screen max-h-screen flex-col border-l border-gray-200 xl:flex w-[355px] xl:overflow-y-scroll !important'>
       <section className='flex flex-col pb-8'>
@@ -33,18 +41,24 @@ const RightSidebar = ({user, accounts, transactions} : RightSidebarProps) => {
       </section>
       <section className='flex flex-col justify-between gap-8 px-6 py-8'>
         <div className='flex w-full justify-between'>
-          <h2 className='text-[18px] font-semibold text-gray-900'>My Accounts</h2>
+          <h2 className='text-[18px] font-semibold text-gray-900'>My Banks</h2>
           <Link href="/" className='flex gap-2'>
             <Image src={PlusIcon} alt='add account' width={20} height={20} />
-            <h2 className='text-[14px] font-semibold text-gray-600'>Add Account</h2>
+            <h2 className='text-[14px] font-semibold text-gray-600'>Add Bank</h2>
           </Link>
         </div>
-        {accounts.length > 0 && (
-          <div className='relative flex flex-1 flex-col items-center justify-center gap-5'>
-            <div className='relative'>
-              Account Card
-            </div>
-          </div>
+        {banks.length > 0 && (
+          <Carousel opts={{align: "center"}} className='mx-8 py-8'>
+            <CarouselContent>
+              {banks.map((bank, index) => (
+                <CarouselItem key={index}>
+                  <BankCard bank={bank} userName={`${user.firstName} ${user.lastName}`} showBalance={false} currency='CAD'/>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         )}
       </section>
     </aside>

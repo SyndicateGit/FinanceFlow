@@ -59,7 +59,7 @@ const Home = () => {
       <RightSidebar
         user={user || defaultUser}
         transactions={[]}
-        accounts={accounts}
+        banks={banks}
       />
     </section>
   )
