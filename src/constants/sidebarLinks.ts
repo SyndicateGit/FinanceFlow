@@ -13,9 +13,9 @@ export const sidebarLinks = [
     label: "Home",
   },
   {
-    imageUrl: Banks,
-    route: "/banks",
-    label: "Banks",
+    imageUrl: Accounts,
+    route: "/bank-accounts",
+    label: "Bank Accounts",
   },
   {
     imageUrl: TransactionHistory,
