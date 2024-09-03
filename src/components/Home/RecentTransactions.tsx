@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from 'next/link'
 import React, { useState, useMemo, useEffect } from 'react'
+import TransactionTable from './TransactionTable'
 
 interface RecentTransactionsProps {
   accounts: Account[],
@@ -84,24 +85,7 @@ export default function RecentTransactions({ accounts, banks }: RecentTransactio
             </TabsList>
             {bankAccounts.map((account: Account) => (
               <TabsContent key={account.id} value={account.id}>
-                <div className="p-4 border rounded">
-                  <h3 className="font-semibold mb-2">{account.accountName || account.accountType}</h3>
-                  <p>Balance: {account.balance} {account.currency}</p>
-                  {account.transactions && account.transactions.length > 0 ? (
-                    <ul className="mt-4 space-y-2">
-                      {account.transactions.slice(0, 5).map((transaction) => (
-                        <li key={transaction.id} className="flex justify-between items-center">
-                          <span>{transaction.description}</span>
-                          <span className={transaction.type === 'EXPENSE' ? 'text-red-500' : 'text-green-500'}>
-                            {transaction.type === 'EXPENSE' ? '-' : '+'}${Math.abs(transaction.amount)}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="mt-4">No recent transactions</p>
-                  )}
-                </div>
+                <TransactionTable transactions={account?.transactions || []} />
               </TabsContent>
             ))}
           </Tabs>
