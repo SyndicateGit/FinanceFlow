@@ -3,7 +3,7 @@ import { Bank } from '@/Models/BankModel'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from 'next/link'
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import TransactionTable from './TransactionTable'
 
 interface RecentTransactionsProps {
@@ -19,6 +19,14 @@ const RecentTransactions = ({ accounts, banks }: RecentTransactionsProps) => {
     return accounts.filter(account => selectedBank.accountIds.includes(account.id))
   }, [selectedBank, accounts])
 
+  useEffect(() => {
+    // Set the first bank as default when the component mounts
+    if (banks.length > 0 && !selectedBank) {
+      setSelectedBank(banks[0])
+    }
+  }, [banks])
+
+  
   return (
     <section className='flex w-full flex-col gap-6'>
       <header className='flex items-center justify-between'>
