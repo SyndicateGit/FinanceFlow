@@ -8,7 +8,6 @@ interface TotalBalanceBoxProps {
   accounts: Account[], 
   banks: Bank[],
   totalCurrentBalance: number,
-
 }
 
 const TotalBalanceBox = ({
@@ -23,7 +22,7 @@ const TotalBalanceBox = ({
       </div>
       <div className='flex flex-col gap-6'>
         <h2 className='text-[18px] font-semibold text-gray-900'>
-          Accounts : {accounts.length}
+          Bank Accounts : {accounts.length}
         </h2>
         <div className='flex flex-col gap-2'>
           <p className='text-14 font-medium text-gray-600'>

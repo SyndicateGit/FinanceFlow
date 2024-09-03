@@ -1,9 +1,9 @@
 export declare type Transaction = {
-  id: number,
+  id: string,
   type: TransactionType;
   amount: number;
   currency: string;
-  date: Date;
+  date: string;
   isRecurring: boolean;
   recurringType: RecurringType;
   note: string;
