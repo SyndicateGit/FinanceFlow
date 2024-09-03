@@ -37,14 +37,24 @@ const Home = () => {
     setBanks(banks);
     const transactions = await getTransactions();
     setTransactions(transactions);
-    const updatedAccounts = updatedAccountsWithTransactions(accounts, transactions);
+    const updatedAccountsWithTransactions = updateAccountsWithTransactions(accounts, transactions);
+    const updatedAccounts = updateAccountsWithBankName(updatedAccountsWithTransactions, banks);
     setAccounts(updatedAccounts);
+    console.log(updatedAccounts);
   }
 
-  const updatedAccountsWithTransactions = (accounts:Account[], transactions: Transaction[]) => {
+  const updateAccountsWithTransactions = (accounts:Account[], transactions: Transaction[]) => {
     const updatedAccounts = accounts.map((account) => {
       const accountTransactions = transactions.filter((transaction) => account.transactionIds.includes(transaction.id))
       return {...account, transactions: accountTransactions}
+    })
+    return updatedAccounts;
+  }
+
+  const updateAccountsWithBankName = (accounts: Account[], banks: Bank[]) => {
+    const updatedAccounts = accounts.map((account) => {
+      const bank = banks.find((bank) => bank.accountIds.includes(account.id))
+      return {...account, accountName: bank?.name + " " + account.accountType}
     })
     return updatedAccounts;
   }
@@ -71,6 +81,7 @@ const Home = () => {
         </header>
         <RecentTransactions 
           accounts={accounts}
+          banks={banks}
         />
       </div>
       <RightSidebar

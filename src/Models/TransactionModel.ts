@@ -3,7 +3,7 @@ export declare type Transaction = {
   type: TransactionType;
   amount: number;
   currency: string;
-  date: Date;
+  date: string;
   isRecurring: boolean;
   recurringType: RecurringType;
   note: string;
