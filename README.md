@@ -22,3 +22,6 @@ Finance Flow helps you manage your finances effectively. With Finance Flow, you 
 - Zod form validation
 - react-form-hook with shadcn
 - Axios instances
+
+Backend (Java, Spring Boot):
+https://github.com/SyndicateGit/FinanceFlowBackend_SpringBoot 
