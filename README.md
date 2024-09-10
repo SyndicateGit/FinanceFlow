@@ -2,7 +2,7 @@
 
 Finance Flow helps you manage your finances effectively. With Finance Flow, you can create accounts, track transactions, view statistics on your spending habits, and create budgets. Take control of your finances and achieve your financial goals with ease.
 
-## Features
+## Features (to be implemented)
 
 - **Account Creation**: Create multiple accounts to manage different aspects of your finances, such as savings, debit, or credit accounts.
 
@@ -13,12 +13,12 @@ Finance Flow helps you manage your finances effectively. With Finance Flow, you 
 - **Budget Management**: Set up budgets to monitor your spending in different categories.
 
 
-## Website layout and styling is inspired by this video by JavaScript Mastery at: https://www.youtube.com/watch?v=PuOVqP_cjkE&t=6037s. Frontend logic surrounding data handling and visualization and backend is my original work.
 
-## Things I've learned: 
+## Things I've learned on front-end: 
 - Next: Next pages, Links, Router, client vs server side rendering, making sure to have components that require client side rendering to be its own component.
 - Shadcn ui
 - Tailwind cn function
 - Better responsive design by having different media breakpoints, different padding, hiding sidebar at md and showing the mobile sidebar instead at below md.
 - Zod form validation
 - react-form-hook with shadcn
+- Axios instances
