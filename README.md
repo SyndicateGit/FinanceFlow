@@ -12,7 +12,12 @@ Finance Flow helps you manage your finances effectively. With Finance Flow, you 
 
 - **Budget Management**: Set up budgets to monitor your spending in different categories.
 
-
+## What there is ATM:
+-**Authentication**
+-**Displaying transaction information**
+-**Displaying Account information**
+-Note: I was working more on the backend at this time as I was interested in learning Java Spring Boot.
+-Figma file used: https://www.figma.com/design/jvcjzjCKw9YlhCNOIY1GPY/Horizon-Banking-App?node-id=0-1&t=4MTRhMsETMbX8x00-0 (This is owned by JSMastery, I used it for mostly for front-end design. Front-end logic and backend is all done by me. I used a different backend than they do and the logic for backend is completely my own.)
 
 ## Things I've learned on front-end: 
 - Next: Next pages, Links, Router, client vs server side rendering, making sure to have components that require client side rendering to be its own component.
